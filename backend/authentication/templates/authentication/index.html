@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'authentication/css/style.css' %}">
+</head>
+<body>
+    <div class="App">
+        <div class="auth-container">
+            <div class="auth-tabs">
+                <button id="signup-tab" class="active">Sign Up</button>
+                <button id="signin-tab">Sign In</button>
+            </div>
+            
+            <form id="auth-form" class="auth-form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required minlength="3">
+                    <span id="username-error" class="error-text"></span>
+                </div>
+
+                <div class="form-group" id="email-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email">
+                    <span id="email-error" class="error-text"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                    <span id="password-error" class="error-text"></span>
+                </div>
+
+                <div class="form-group" id="confirm-group">
+                    <label for="password_confirm">Confirm Password:</label>
+                    <input type="password" id="password_confirm" name="password_confirm" minlength="8">
+                    <span id="password_confirm-error" class="error-text"></span>
+                </div>
+
+                <button type="submit" id="submit-btn">Sign Up</button>
+            </form>
+            
+            <div id="message" style="display: none;"></div>
+        </div>
+    </div>
+    
+    <script src="{% static 'authentication/js/auth.js' %}"></script>
+</body>
+</html>
